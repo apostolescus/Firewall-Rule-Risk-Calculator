@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Buttons</title>
+</head>
+
+<body>
+   
+    <div class="container">
+        <h1> <span class="firewall">Firewall</span> Risk Calculator</h1>
+    <form method="post">
+        <div class="dropdown">
+            <label for="traffic_flow" class="question"> What is the flow of the traffic?</label>
+            <select id="traffic_flow" name="traffic_flow">
+                <option value="20" {% if form_data["traffic_flow"] == "20" %} selected {% endif %}>Inbound from internet</option>
+                <option value="15" {% if form_data["traffic_flow"] == "15" %} selected {% endif %}>Outbound to the internet</option>
+                <option value="10" {% if form_data["traffic_flow"] == "10" %} selected {% endif %}>Internal cross-segment</option>
+                <option value="5" {% if form_data["traffic_flow"] == "5" %} selected {% endif %}>Internal same-segment</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="data_type" class="question">What type of data is involved?</label>
+            <select id="data_type" name="data_type">
+                <option value="20" {% if form_data["data_type"] == "20" %} selected {% endif %}>Sensitive data (e.g., PII, financial)</option>
+                <option value="15" {% if form_data["data_type"] == "15" %} selected {% endif %}>Important data (e.g., internal business data)</option>
+                <option value="10" {% if form_data["data_type"] == "10" %} selected {% endif %}>General data (e.g., non-sensitive internal data)</option>
+                <option value="5" {% if form_data["data_type"] == "5" %} selected {% endif %}>Non-sensitive data</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="destination_source" class="question">What is the destination/source of the traffic?</label>
+            <select id="destination_source" name="destination_source">
+                <option value="20" {% if form_data["destination_source"] == "20" %} selected {% endif %}>Critical systems (e.g., databases, application servers)</option>
+                <option value="15" {% if form_data["destination_source"] == "15" %} selected {% endif %}>Important systems (e.g., file servers, internal applications)</option>
+                <option value="10" {% if form_data["destination_source"] == "10" %} selected {% endif %}>General systems (e.g., user workstations)</option>
+                <option value="5" {% if form_data["destination_source"] == "5" %} selected {% endif %}>Low-sensitivity systems (e.g., printers, VoIP phones)</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="access_method" class="question">What is the access method?</label>
+            <select id="access_method" name="access_method">
+                <option value="20" {% if form_data["access_method"] == "20" %} selected {% endif %}>Unencrypted protocols (e.g., Telnet, FTP)</option>
+                <option value="10" {% if form_data["access_method"] == "10" %} selected {% endif %}>Secure protocols (e.g., SSH, HTTPS)</option>
+                <option value="5" {% if form_data["access_method"] == "5" %} selected {% endif %}>Internal encrypted protocols (e.g., internal VPN)</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="compensating_controls" class="question">What compensating controls are in place?</label>
+            <select id="compensating_controls" name="compensating_controls">
+                <option value="15" {% if form_data["compensating_controls"] == "15" %} selected {% endif %}>None</option>
+                <option value="10" {% if form_data["compensating_controls"] == "10" %} selected {% endif %}>Local Logging</option>
+                <option value="5" {% if form_data["compensating_controls"] == "5" %} selected {% endif %}>Advanced logging, monitoring and IDS/IPS</option>
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="rule_frequency" class="question">How frequently is the rule used?</label>
+            <select id="rule_frequency" name="rule_frequency">
+                <option value="20" {% if form_data["rule_frequency"] == "20" %} selected {% endif %}>Constantly</option>
+                <option value="15" {% if form_data["rule_frequency"] == "15" %} selected {% endif %}>Regularly</option>
+                <option value="10" {% if form_data["rule_frequency"] == "10" %} selected {% endif %}>Occasionally</option>
+                <option value="5" {% if form_data["rule_frequency"] == "5" %} selected {% endif %}>Rarely</option>
+            </select>
+        </div>
+       
+
+        <button type="submit">Calculate Total</button>
+    </form>
+
+    {% if total is not none and risk_level is not none %}
+        <div id="result">
+            <p>Total Value: {{ total }}</p>
+            <div class="risk-level" style="background-color: 
+            {% if risk_level == 'Critical' %} red;
+            {% elif risk_level == 'High' %} orange;
+            {% elif risk_level == 'Medium' %} yellow;
+            {% elif risk_level == 'Low' %} green;
+            {% endif %}">
+            <p>Risk Level: {{ risk_level }}</p>
+            </div>
+        </div>
+    {% endif %}
+    <div>
+        <p> For quick docs: &#128507; <a href="/documentation">Documentation</a> page.</p>
+    </div>
+</div>
+</body>
+</html>

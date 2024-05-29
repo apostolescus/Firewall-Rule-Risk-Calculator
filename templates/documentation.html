@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="{{ url_for('static', filename='doc_styling.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+</head>
+<body>
+   
+    <div class="container">
+        <h1>Documentation</h1>
+        
+        <div class="documentation-item">
+            <p class="accordion">What is the flow of the traffic?</p>
+            <div class="content panel">
+                <p>This question refers to the direction of network traffic. Depending by this flow risks can increase drastically.</p>
+                <h2>Scoring</h2>
+                <p>The flows have the following score:
+                <ul>
+                    <li>Inbound from internet - 20</li>
+                    <li>Outbound to internet - 15</li>
+                    <li>Internal cross-segment - 10</li>
+                    <li>Internal inter-segment - 5</li>
+                
+                </ul>
+            </p>
+                <h2>Risks</h2>
+                <p>Depending by the flow of the traffic, it might be exposes the following risks:</p>
+                <ul>
+                    <li>Unauthorized access</li>
+                    <li>Data exfiltration</li>
+                    <li>Malware propagation</li>
+                    <li>DDoS attacks</li>
+                    <li>Data interception</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="documentation-item">
+            <p class="accordion">What type of data is involved?</p>
+            <div class="content panel">
+                <p>This question refers to the type of data that is involved in the network traffic. Depending by the data type risks can increase drastically.</p>
+                <h2>Scoring</h2>
+                <p>The data types have the following score:
+                <ul>
+                    <li>Sensitive data (e.g., PII, financial) - 20</li>
+                    <li>Important data (e.g., internal business data) - 15</li>
+                    <li>General data (e.g., non-sensitive internal data) - 10</li>
+                    <li>Non-sensitive data - 5</li>
+                
+                </ul>
+            </p>
+                <h2>Risks</h2>
+                <p>Depending by the data type, it might be exposes the following risks:</p>
+                <ul>
+                    <li>Data exfiltration</li>
+                    <li>Unauthorized access</li>
+                    <li>Data interception</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        
+        <div class="documentation-item">
+            <p class="accordion">What is the destination/source of the traffic?</p>
+            <div class="content panel">
+                <p></p>
+                <h2>Scoring</h2>
+                <p>The system types have the following score:
+                <ul>
+                    <li>Critical systems (e.g., databases, application servers) - 20</li>
+                    <li>Important systems (e.g., file servers, internal applications) - 15</li>
+                    <li>General systems (e.g., user workstations) - 10</li>
+                    <li>Low-sensitivity systems (e.g., printers, VoIP phones) - 5</li>
+                
+                </ul>
+            </p>
+                
+            </div>
+            
+        </div>
+
+        <div class="documentation-item">
+            <p class="accordion">What protocol is used?</p>
+            <div class="content panel">
+                <p></p>
+                <h2>Scoring</h2>
+                <p>Depending of type of protocol used, we have the following score:
+                <ul>
+                    <li>Unencrypted protocols (e.g., Telnet, FTP) - 20</li>
+                    <li>Secure protocols (e.g., SSH, HTTPS) - 10</li>
+                    <li>Internal encrypted protocols (e.g., internal VPN) - 5</li>
+                
+                </ul>
+            </p>
+                
+            </div>
+            
+        </div>
+
+        <div class="documentation-item">
+            <p class="accordion">What compensating controls are in place?</p>
+            <div class="content panel">
+                <p>Some of the risk might be mitigated by compensating controls. </p>
+                <h2>Scoring</h2>
+                <p>Depending of type of compensating controls, we have the following score:
+                <ul>
+                    <li>None - 15</li>
+                    <li>Local Logging - 10</li>
+                    <li>Advanced logging, monitoring and IDS/IPS - 5</li>
+                
+                </ul>
+            </p>
+                
+            </div>
+
+            <div class="documentation-item">
+                <p class="accordion">How frequently is the rule used?</p>
+                <div class="content panel">
+                    <p>Logic: A rule that is used more often is both more critical and more prone to exploitation</p>
+                    <h2>Scoring</h2>
+                    <p>Depending of type of protocol used, we have the following score:
+                    <ul>
+                        <li>Very often (high volume daily) - 20</li>
+                        <li>Constantly (average daily volume) - 15</li>
+                        <li>Occasionally (used once a couple of days or very low daily traffic) - 10</li>
+                        <li>Rarely (use spordaically) - 5  </li>
+                    
+                    </ul>
+                </p>
+                    
+                </div>
+            
+        </div>
+</body>
+
+</html>
+
