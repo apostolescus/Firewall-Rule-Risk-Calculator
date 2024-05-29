@@ -20,7 +20,7 @@
 - [License](#license)
 
 ## App look 
-![alt text](<Screenshot from 2024-05-29 16-04-43.png>)
+![alt text](<app_look.png>)
 
 ## Installation
 
