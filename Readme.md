@@ -72,10 +72,10 @@ To get started with the Firewall Rules Risk Calculator, follow these steps:
 To run the application using Docker, follow these steps:
 1. Build the docker image:
     ``` 
-    docker build -t flask-app .
+    sudo docker build --tag python-docker .
 2. Run the docker container:
     ```
-    docker run -p 8989:8989 flask-app
+    docker run -d -p 8989:8989 python-docker
 3. Open your browser and navigate to: "http://localhost:8989'
 
 ### Documentation
